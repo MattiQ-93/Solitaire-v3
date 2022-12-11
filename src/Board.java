@@ -160,6 +160,67 @@ public class Board {
 		loopPrinting("\n", 1);
 	}
 	
+	public static void printTextWithinPipes(String text, int repeat1) {
+		// method for easy printing text between two pipes with repeat1 amounts of spaces before text
+		
+		loopPrinting("|", 1);
+		loopPrinting(" ", repeat1);
+		loopPrinting(text, 1);
+		loopPrinting(" ", 104 - repeat1 - text.length());
+		loopPrinting("|", 1);
+		loopPrinting("\n", 1);
+		
+	}
+	
+	public static void printTextWithinPipes(String text) {
+		// method for easy printing text between two pipes in the midle of them
+		int int0 = text.length();
+		int int1 = (104 - int0)/2;
+		int int2 = 104 - int1 - int0;
+		
+		loopPrinting("|", 1);
+		loopPrinting(" ", int1);
+		loopPrinting(text, 1);
+		loopPrinting(" ", int2);
+		loopPrinting("|", 1);
+		loopPrinting("\n", 1);
+	}
+	
+	public static void printLabeledMessage(String text) {
+		// print text in "box"
+		
+		loopPrintingLine(" ", "_", 1, 104, 1);
+		loopPrintingLine("|", " ", 1, 104, 1);
+		printTextWithinPipes(text, 5);
+		loopPrintingLine("|", "_", 1, 104, 1);
+	}
+	
+	public static void printChooseColumnMessage(){
+		printTextWithinPipes("Choose column or stack to move card(s) from...", 5);
+	}
+	public static void printChooseRowMessage(){
+		printTextWithinPipes("Choose row to move card(s) from...", 5);
+	}
+	public static void printChooseDestinationMessage(){
+		printTextWithinPipes("Choose column or stack to move card(s) to...", 5);
+	}
+	public static void printChooseEndStackMessage(){
+		printTextWithinPipes("Choose end stack to move card from...(1 to 4)", 5);
+	}
+	public static void printWrongMoveMessage(){
+		printLabeledMessage("Wrong move. Please try again.");
+	}
+	public static void printNoMovesMessage(){
+		printLabeledMessage("You didn't make any moves.");
+	}
+	public static void printTypedLettersMessage(){
+		printLabeledMessage("Please don't put letters in me. It hurts :'(");
+	}
+	public static void printEmptyStackMessage(){
+		printLabeledMessage("Stack is empty. Please try again.");
+	}
+	
+	
 	public static void printTable() {
 		
 		// checks if game is already won
@@ -172,29 +233,27 @@ public class Board {
 		loopPrintingLine("|", " ", 1, 19, 23, 19, 19, 20);		// "|     |"
 		
 		// print 3rd line with color names of final stacks, and additional stack
-		loopPrinting("|", 1);
-		loopPrinting(" ", 1);
+		loopPrinting("| ", 1);
 		System.out.print("[ 8 ] Hearts");
 		loopPrinting(" ", 2);
 		System.out.print("(1)");
-		loopPrinting(" ", "|", 1, 1, 1);		// " | "
+		loopPrinting(" | ", 1);
 		System.out.print("[ 8 ] Diamonds");
 		loopPrinting(" ", 4);
 		System.out.print("(2)");
-		loopPrinting(" ", "|", 1, 1, 1);		// " | "
+		loopPrinting(" | ", 1);
 		System.out.print("[ 8 ] Clubs");
 		loopPrinting(" ", 3);
 		System.out.print("(3)");
-		loopPrinting(" ", "|", 1, 1, 1);		// " | "
+		loopPrinting(" | ", 1);
 		System.out.print("[ 8 ] Spades");
 		loopPrinting(" ", 2);
 		System.out.print("(4)");
-		loopPrinting(" ", "|", 1, 1, 1);		// " | "
+		loopPrinting(" | ", 1);
 		loopPrinting(" ", 3);
 		System.out.print("[ 9 ] Stack");
 		loopPrinting(" ", 5); 
-		loopPrinting("|", 1); 
-		loopPrinting("\n", 1); 
+		loopPrinting("|\n", 1); 
 		
 		// print 4th line with card names of final stacks, and additional stack
 		loopPrintingLine("|", " ", 1, 19, 23, 19, 19, 20);		// "|     |"
@@ -202,17 +261,16 @@ public class Board {
 		loopPrinting("|", 1); 
 		loopPrinting(" ", 6);
 		System.out.print(cardDeck.getCard(endStacks[0]).getPrintName());
-		loopPrinting(" ", "|", 6, 1, 8);		// " | "
+		loopPrinting(" ", "|", 6, 1, 8);									// "  |  "
 		System.out.print(cardDeck.getCard(endStacks[1]).getPrintName());
-		loopPrinting(" ", "|", 8, 1, 6);		// " | "
+		loopPrinting(" ", "|", 8, 1, 6);									// "  |  "
 		System.out.print(cardDeck.getCard(endStacks[2]).getPrintName());
-		loopPrinting(" ", "|", 6, 1, 6);		// " | "
+		loopPrinting(" ", "|", 6, 1, 6);									// "  |  "
 		System.out.print(cardDeck.getCard(endStacks[3]).getPrintName());
-		loopPrinting(" ", "|", 6, 1, 6);		// " | "
+		loopPrinting(" ", "|", 6, 1, 6);									// "  |  "
 		System.out.print(cardDeck.getCard(stackList.get(stackIterator)).getPrintName());
 		loopPrinting(" ", 7);
-		loopPrinting("|", 1); 
-		loopPrinting("\n", 1); 
+		loopPrinting("|\n", 1);
 		
 		// print 5th and 6th lines
 		loopPrintingLine("|", "_", 1, 19, 23, 19, 19, 20);		// "|_____|"
@@ -232,9 +290,7 @@ public class Board {
 		}
 		loopPrinting(" ", 9);
 		System.out.print("[ 0 ] Refresh stack");
-		loopPrinting(" ", 1);
-		loopPrinting("|", 1); 
-		loopPrinting("\n", 1); 
+		loopPrinting(" |\n", 1);
 
 		// print 5th and 6th lines
 		loopPrintingLine("|", "_", 1, 104, 1); 					// "|_____|"
@@ -268,7 +324,7 @@ public class Board {
 				
 				// print " | " as a separator between each card in row
 				if (j < playTable[0].length -1) {
-					loopPrinting(" ", "|", 1, 1, 1);		// " | "
+					loopPrinting(" | ", 1);
 				}
 				
 				// print row number at the end of each row
@@ -339,17 +395,23 @@ public class Board {
 	
 	public static void printWinningScreen() {
 		// prints the screen after successfully finishing a game
-	
-	System.out.println("Congratulations. You just won the game. I'm very happy for your victory. ;)");
-	System.out.println("\nIt took " + countMoves + " moves for you to finish this game.");
-	System.out.println("\nType anything to go back to menu");
-	scanner.nextLine();
-	Menu.printMenu();
+		loopPrintingLine(" ", "_", 1, 104, 1);
+		loopPrintingLine("|", " ", 1, 104, 1);
+		printTextWithinPipes("Congratulations. You just won the game. I'm very happy for your victory. ;)", 5);
+		loopPrintingLine("|", " ", 1, 104, 1);
+		printTextWithinPipes("It took " + countMoves + " moves for you to finish this game.", 5);
+		loopPrintingLine("|", " ", 1, 104, 1);
+		printTextWithinPipes("Type anything to go back to menu", 5);
+		loopPrintingLine("|", "_", 1, 104, 1); 
+		loopPrinting("\n", 1);
+		
+		scanner.nextLine();
+		Menu.printMenu();
 	}
 	
 	public static void playGame() {
 		
-		System.out.println("Choose column or stack to move card(s) from...");
+		printChooseColumnMessage();
 
 		// checks if user typed integer or not
 		checkInput();
@@ -357,39 +419,29 @@ public class Board {
 		// get first choice/ input
 		sCol = scanner.nextInt();
 		
-		if (sCol == 0) {						// refresh stack
-			refreshStack();
+		switch (sCol) {
+			case 0 -> refreshStack();				// refresh stack
+			case 1,2,3,4,5,6,7 -> moveFromBoard();	// user chose column
+			case 9 -> moveFromStack();				// user chose additional stack 
+			case 8 -> moveFromEndStack();			// user chose final stack
+			case 10 -> undoMove();					// undo move
+			case 20 -> resetGame();					// reset game - start again the same game
+			case 30 -> {							// new game
+				putValues();
+				printTable();
+			}
+			case 40 -> Menu.printMenu();			// go back to menu
+			case 99 -> {							// instant finish game, only if possible
+				if (isGameAlmostWon()) {
+					finishGame();
+					printWinningScreen();
+				}
+			}	
+			default -> {							// nothing possible was chosen
+				printWrongMoveMessage();
+				playGame();
+			}
 		}
-		if (sCol >= 1 && sCol <= 7) {			// user chose column
-			moveFromBoard();
-		}
-		if (sCol == 9) {						// user chose additional stack 
-			moveFromStack();
-		}
-		if (sCol == 8) {						// user chose final stack
-			moveFromEndStack();
-		}
-		if (sCol == 10) {						// undo move
-			undoMove();
-		}
-		if (sCol == 20) {						// reset game - start again the same game
-			resetGame();
-		}
-		if (sCol == 30) {						// new game
-			putValues();
-			printTable();
-		}
-		if (sCol == 40) {						// go back to menu
-			Menu.printMenu();
-		}
-		if (sCol == 99 && isGameAlmostWon()) {	// instant finish game, only if possible
-			finishGame();
-			printWinningScreen();
-		}
-		
-		// nothing possible was chosen
-		System.out.println("Wrong move. Please try again.");
-		playGame();
 	}
 		
 	public static void addSteps() {
@@ -438,7 +490,7 @@ public class Board {
 		
 		// if game just started, you have no steps to go back to
 		if (countSteps == 0) {
-			System.out.println("You didn't make any moves.");
+			printNoMovesMessage();
 			playGame();
 		}
 		
@@ -505,7 +557,7 @@ public class Board {
 		
 		// if stack is already empty, print message it's empty
 		if (stackSize == 0) {
-			System.out.println("Stack is empty. Please try again.");
+			printEmptyStackMessage();
 			playGame();
 		}
 		
@@ -613,7 +665,7 @@ public class Board {
 	public static void checkInput() {
 		// checks if user typed integer or not
 		if (!scanner.hasNextInt()) {
-			System.out.println("Please don't put letters in me. It hurts :'(");
+			printTypedLettersMessage();
 			scanner.nextLine();
 			playGame();
 		}
@@ -653,10 +705,10 @@ public class Board {
 				return;
 			} 
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		} catch (NullPointerException e) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		}
 	}
@@ -673,7 +725,7 @@ public class Board {
 		// if there are more than 1 cards visible in column, then you need to
 		//  choose row to move card from
 		if (!isCardAlone()) {
-			System.out.println("Choose row to move card(s) from...");
+			printChooseRowMessage();
 			
 			// checks if user typed integer or not
 			checkInput();
@@ -700,7 +752,7 @@ public class Board {
 		
 		card1 = cardDeck.getCard(playTable[sRow - 1][sCol - 1]);
 		
-		System.out.println("Choose column or stack to move card(s) to...");
+		printChooseDestinationMessage();
 		
 		// checks if user typed integer or not
 		checkInput();
@@ -730,14 +782,14 @@ public class Board {
 				printTable();
 			} 
 			if (!isKingMovingPosible() && !isMovePosible() && !isMovingToEndStackPosible()){
-				System.out.println("Wrong move. Please try again.");
+				printWrongMoveMessage();
 				playGame();
 			}
 		} catch (NullPointerException e) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		}
 	}
@@ -747,11 +799,11 @@ public class Board {
 		
 		// checks if stack is empty
 		if (stackSize == 0) {
-			System.out.println("Stack is empty. Please try again.");
+			printEmptyStackMessage();
 			playGame();
 		}
 		
-		System.out.println("Choose column or stack to move card(s) to...");
+		printChooseDestinationMessage();
 
 		// checks if user typed integer or not
 		checkInput();
@@ -782,14 +834,14 @@ public class Board {
 				printTable();
 			}
 			if (!isKingMovingPosible() && !isMovePosible()){
-				System.out.println("Wrong move. Please try again.");
+				printWrongMoveMessage();
 				playGame();
 			}
 		} catch (NullPointerException e) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		}
 	}
@@ -797,7 +849,7 @@ public class Board {
 	public static void moveFromEndStack() {
 		// this method is used to move cards back from final stacks
 		
-		System.out.println("Choose end stack to move card from...(1 to 4)");
+		printChooseEndStackMessage();
 
 		// checks if user typed integer or not
 		checkInput();
@@ -806,18 +858,18 @@ public class Board {
 		
 		// checks if there is any card you can move from chosen final stack
 		if (!isThereCardsOnEndStack()) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		}
 		
 		try {
 			card1 = cardDeck.getCard(endStacks[sRow - 1]);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		}
 		
-		System.out.println("Choose column or stack to move card(s) to...");
+		printChooseDestinationMessage();
 
 		// checks if user typed integer or not
 		checkInput();
@@ -831,17 +883,17 @@ public class Board {
 		// checks if you want to take back king, or other card
 		try {
 			if (!isKingMovingPosible() && !isMovePosible()){
-				System.out.println("Wrong move. Please try again.");
+				printWrongMoveMessage();
 				playGame();
 			}
 			endStackMoving();
 			addSteps();
 			printTable();
 		} catch (NullPointerException e) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Wrong move. Please try again.");
+			printWrongMoveMessage();
 			playGame();
 		}
 	}
@@ -883,7 +935,8 @@ public class Board {
 			
 			// checks if stack is empty
 			if (stackSize == 0) {
-				System.out.println("Stack is empty. Please try again.");
+				
+				printEmptyStackMessage();
 				playGame();
 			}
 			
@@ -913,7 +966,7 @@ public class Board {
 		
 		// checks if stack is empty
 		if (stackSize == 0) {
-			System.out.println("Stack is empty. Please try again.");
+			printEmptyStackMessage();
 			playGame();
 		}
 		
@@ -949,7 +1002,7 @@ public class Board {
 			cardAmounts[dCol - 1] += numberOfCards;
 		}
 	
-		// used for mooving Aces
+		// used for moving Aces
 		if (isMovePosible() && card1.getValue() == 1) {
 			playTable[cardAmounts[dCol - 1]][dCol - 1] = endStacks[sRow - 1];
 			switch (card1.getColor()) {
