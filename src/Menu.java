@@ -2,9 +2,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-	public static void main(String[] args) {
-		printMenu();
-	}
 	
 	private static final Scanner scanner = new Scanner(System.in);
 	private static int menuChoice;
