@@ -209,15 +209,19 @@ public class Board {
 	}
 	public static void printWrongMoveMessage(){
 		printLabeledMessage("Wrong move. Please try again.");
+		loopPrinting("\n", 1);
 	}
 	public static void printNoMovesMessage(){
 		printLabeledMessage("You didn't make any moves.");
+		loopPrinting("\n", 1);
 	}
 	public static void printTypedLettersMessage(){
 		printLabeledMessage("Please don't put letters in me. It hurts :'(");
+		loopPrinting("\n", 1);
 	}
 	public static void printEmptyStackMessage(){
 		printLabeledMessage("Stack is empty. Please try again.");
+		loopPrinting("\n", 1);
 	}
 	
 	

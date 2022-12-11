@@ -23,12 +23,12 @@ public class Card {
 		this.color = color;
 		
 		switch (color) {
-		case "Spades" -> this.colorValue = 1;
-		case "Clubs" -> this.colorValue = 1;
-		case "Diamonds" -> this.colorValue = 2;
-		case "Hearts" -> this.colorValue = 2;
-		
-		default -> this.colorValue = 0;
+			case "Spades" -> this.colorValue = 1;
+			case "Clubs" -> this.colorValue = 1;
+			case "Diamonds" -> this.colorValue = 2;
+			case "Hearts" -> this.colorValue = 2;
+			
+			default -> this.colorValue = 0;
 		}
 		
 		switch (value) {
