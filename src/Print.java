@@ -26,16 +26,20 @@ public class Print {
 	}
 	
 	public static void printTextWithinPipes(String text, int repeat1) {
+		// method for easy printing text within 2 pipes wtih repeat amount of spaces
+		// between first pipe and text - with new line
+		
 		loopPrinting("|", 1);
 		loopPrinting(" ", repeat1);
 		loopPrinting(text, 1);
 		loopPrinting(" ", 104 - repeat1 - text.length());
-		loopPrinting("|", 1);
-		loopPrinting("\n", 1);
+		loopPrinting("|\n", 1);
 		
 	}
 	
 	public static void printTextWithinPipes(String text) {
+		// method for easy printing text within 2 pipes in the middle between them - with new line
+		
 		int int0 = text.length();
 		int int1 = (104 - int0)/2;
 		int int2 = 104 - int1 - int0;
@@ -44,8 +48,7 @@ public class Print {
 		loopPrinting(" ", int1);
 		loopPrinting(text, 1);
 		loopPrinting(" ", int2);
-		loopPrinting("|", 1);
-		loopPrinting("\n", 1);
+		loopPrinting("|\n", 1);
 	}
 	
 	public static void loopPrintingLine(String text1, String text2,int repeat0, int repeat1, int repeat2, int repeat3, int repeat4, int repeat5) {
@@ -75,6 +78,8 @@ public class Print {
 		loopPrintingLine("|", "_", 1, 104, 1);
 	}
 	
+	
+	// all methods below are for messages used in board class
 	public static void printChooseColumnMessage(){
 		printTextWithinPipes("Choose column or stack to move card(s) from...", 5);
 	}
