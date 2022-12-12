@@ -4,10 +4,10 @@ public class Card {
 	private int value;
 	private String name;
 	private String printName;
-	private String color;
-	private int colorValue;
+	private Suit suit;
+	private Color color;
 	
-	public Card(int value,  String color) {
+	public Card(int value,  Suit suit) {
 		this.value = value;
 
 		switch (value) {
@@ -20,39 +20,40 @@ public class Card {
 			default -> this.name = "";
 		}
 		
-		this.color = color;
+		this.suit = suit;
 		
-		switch (color) {
-			case "Spades" -> this.colorValue = 1;
-			case "Clubs" -> this.colorValue = 1;
-			case "Diamonds" -> this.colorValue = 2;
-			case "Hearts" -> this.colorValue = 2;
-			
-			default -> this.colorValue = 0;
+		switch (suit) {
+			case HEARTS -> this.color = Color.RED;
+			case DIAMONDS -> this.color = Color.RED;
+			case CLUBS -> this.color = Color.BLACK;
+			case SPADES -> this.color = Color.BLACK;
 		}
 		
 		switch (value) {
-			case 1,2,3,4,5,6,7,8,9,11,12,13 -> this.printName = (colorValue == 1 ? "+" : "-") 
-												+ "| " + name + " |"  + color.substring(0, 1);
-			case 10 -> this.printName = (colorValue == 1 ? "+" : "-")  + "| " + name 
-												+ "|" + color.substring(0, 1);
+			case 1,2,3,4,5,6,7,8,9,11,12,13 -> this.printName = (color == Color.RED ? "+" : "-") 
+												+ "| " + name + " |"  + suit.toString().substring(0, 1);
+			case 10 -> this.printName = (color == Color.RED ? "+" : "-")  + "| " + name 
+												+ "|" + suit.toString().substring(0, 1);
 		}
 		
 	}
 	
-	public Card(String color) {
+	public Card(Suit suit) {
 		this.value = 0;
 		this.printName = "_______";
-		this.color = color;
+		this.suit = suit;
 
-		switch (color) {
-		case "Spades" -> this.colorValue = 1;
-		case "Clubs" -> this.colorValue = 1;
-		case "Diamonds" -> this.colorValue = 2;
-		case "Hearts" -> this.colorValue = 2;
-		
-		default -> this.colorValue = 0;
+		switch (suit) {
+			case HEARTS -> this.color = Color.RED;
+			case DIAMONDS -> this.color = Color.RED;
+			case CLUBS -> this.color = Color.BLACK;
+			case SPADES -> this.color = Color.BLACK;
 		}
+	}
+	
+	public Card() {
+		this.value = 0;
+		this.printName = "_______";
 	}
 
 	public int getValue() {
@@ -67,11 +68,11 @@ public class Card {
 		return printName;
 	}
 
-	public String getColor() {
-		return color;
+	public Suit getSuit() {
+		return suit;
 	}
 
-	public int getColorValue() {
-		return colorValue;
+	public Color getColor() {
+		return color;
 	}
 }
