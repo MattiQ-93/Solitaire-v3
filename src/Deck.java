@@ -5,20 +5,16 @@ public class Deck {
 	HashMap<Integer, Card> deck = new HashMap<Integer, Card>();
 	
 	public Deck() {
-		for (int i = 1; i <= 52; i++) {
-			if (i >= 1 && i <= 13) {
-				deck.put(i, new Card(i, Suit.SPADES));
-			}
-			if (i >= 14 && i <= 26) {
-				deck.put(i, new Card(i - 13, Suit.CLUBS));
-			}
-			if (i >= 27 && i <= 39) {
-				deck.put(i, new Card(i - 26, Suit.DIAMONDS));
-			}
-			if (i >= 40 && i <= 52) {
-				deck.put(i, new Card(i - 39, Suit.HEARTS));
-			}
+		
+		// putting into hashmap newly created playing cards
+		for (int i = 1; i <= 13; i++) {
+			deck.put(i, new Card(i, Suit.SPADES));
+			deck.put(i + 13, new Card(i, Suit.CLUBS));
+			deck.put(i + 26, new Card(i, Suit.DIAMONDS));
+			deck.put(i + 39, new Card(i, Suit.HEARTS));
 		}
+		
+		// creating cards to be shown on empty additional and final stacks
 		deck.put(100, new Card());
 		deck.put(101, new Card(Suit.SPADES));
 		deck.put(102, new Card(Suit.CLUBS));
