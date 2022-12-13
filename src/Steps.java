@@ -3,13 +3,13 @@ import java.util.List;
 
 public class Steps {
 
-	public int[][] playTable = new int[19][7];
-	public boolean[][] visibility = new boolean[19][7];
-	public int[] cardAmounts = new int[7];
-	public int stackSize;
-	public int stackIterator;
-	public int[] endStacks = new int[4];
-	public List<Integer> stackList = new ArrayList<>();
+	private int[][] playTable = new int[19][7];
+	private boolean[][] visibility = new boolean[19][7];
+	private int[] cardAmounts = new int[7];
+	private int stackSize;
+	private int stackIterator;
+	private int[] endStacks = new int[4];
+	private List<Integer> stackList = new ArrayList<>();
 	
 	public int getPlayTable(int i, int j) {
 		return playTable[i][j];

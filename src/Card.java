@@ -25,10 +25,8 @@ public class Card {
 
 		// defines color based on suit
 		switch (suit) {
-			case HEARTS -> this.color = Color.RED;
-			case DIAMONDS -> this.color = Color.RED;
-			case CLUBS -> this.color = Color.BLACK;
-			case SPADES -> this.color = Color.BLACK;
+			case HEARTS, DIAMONDS -> this.color = Color.RED;
+			case CLUBS, SPADES -> this.color = Color.BLACK;
 		}
 		
 		// creates printName based on value and using suit and color

@@ -398,25 +398,8 @@ public class Board {
 		countSteps -= 1;
 		
 		// loading all values stored as backup
-		for (int i = 0; i < playTable.length; i++) {
-			for (int j = 0; j < playTable[0].length; j++) {
-				playTable[i][j] = stepsMap.get(countSteps).getPlayTable(i, j);
-				visibility[i][j] = stepsMap.get(countSteps).getVisibility(i, j);
-			}
-		}
-		for (int i = 0; i < cardAmounts.length; i++) {
-			cardAmounts[i] = stepsMap.get(countSteps).getCardAmounts(i);
-		}
-		stackSize = stepsMap.get(countSteps).getStackSize();
-		stackIterator = stepsMap.get(countSteps).getStackIterator();
-		for (int i = 0; i < endStacks.length; i++) {
-			endStacks[i] = stepsMap.get(countSteps).getEndStacks(i);
-		}
-		stackList.clear();
-		for(int i = 0; i < stackSize; i++) {
-			stackList.add(stepsMap.get(countSteps).getStackList(i));
-		}
-
+		loadStep(countSteps);
+		
 		// going back is still counted as move
 		countMoves += 1;
 
@@ -428,28 +411,36 @@ public class Board {
 		// this method resets game, which means going back to step 0
 		
 		// loading all values stored as backup for step 0
-		for (int i = 0; i < playTable.length; i++) {
-			for (int j = 0; j < playTable[0].length; j++) {
-				playTable[i][j] = stepsMap.get(0).getPlayTable(i, j);
-				visibility[i][j] = stepsMap.get(0).getVisibility(i, j);
-			}
-		}
-		for (int i = 0; i < cardAmounts.length; i++) {
-			cardAmounts[i] = stepsMap.get(0).getCardAmounts(i);
-		}
-		stackSize = stepsMap.get(0).getStackSize();
-		stackIterator = stepsMap.get(0).getStackIterator();
-		for (int i = 0; i < endStacks.length; i++) {
-			endStacks[i] = stepsMap.get(0).getEndStacks(i);
-		}
-		stackList.clear();
-		for(int i = 0; i < stackSize; i++) {
-			stackList.add(stepsMap.get(0).getStackList(i));
-		}
+		loadStep(0);
+		
 		countSteps = 0;
 		countMoves = 0;
 		
 		printTable();
+	}
+	
+	public static void loadStep(int step) {
+		// loading all values stored as backup for given step
+		
+		for (int i = 0; i < playTable.length; i++) {
+			for (int j = 0; j < playTable[0].length; j++) {
+				playTable[i][j] = stepsMap.get(step).getPlayTable(i, j);
+				visibility[i][j] = stepsMap.get(step).getVisibility(i, j);
+			}
+		}
+		for (int i = 0; i < cardAmounts.length; i++) {
+			cardAmounts[i] = stepsMap.get(step).getCardAmounts(i);
+		}
+		stackSize = stepsMap.get(step).getStackSize();
+		stackIterator = stepsMap.get(step).getStackIterator();
+		for (int i = 0; i < endStacks.length; i++) {
+			endStacks[i] = stepsMap.get(step).getEndStacks(i);
+		}
+		stackList.clear();
+		for(int i = 0; i < stackSize; i++) {
+			stackList.add(stepsMap.get(step).getStackList(i));
+		}
+
 	}
 	
 	public static void refreshStack() {
