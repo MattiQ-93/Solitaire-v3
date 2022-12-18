@@ -275,6 +275,27 @@ public class Board {
 										Print.loopPrinting("|", 1);
 									}
 							}
+							
+							// showing actual move count
+							case 18 -> {
+								Print.loopPrinting(" ", 2);
+								System.out.print("Moves:");
+								Print.loopPrinting(" ", 1);
+								System.out.print(countMoves);
+								
+								if (countMoves > 99) {
+									Print.loopPrinting(" ", 8);
+								}
+								if (countMoves > 9 || countMoves < 100) {
+									Print.loopPrinting(" ", 9);
+								}
+								if (countMoves < 10) {
+									Print.loopPrinting(" ", 10);
+								}
+
+								
+								Print.loopPrinting("|", 1);
+							}
 							default -> {
 								Print.loopPrinting(" ", 20);
 								Print.loopPrinting("|", 1);
